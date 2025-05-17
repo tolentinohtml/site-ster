@@ -4,19 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <link rel="stylesheet" type="text/css" href="style.css">
 <body>
     <header>
         <nav>
             <a class="logo" href="/">Logo</a>
-            <ul nav-list>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
                 <li> <a href="/">Inicio</a></li>
                 <li> <a href="/">Inicio</a></li>
                   <li> <a href="/">Inicio</a></li>
             </ul>
         </nav>
     </header>
+      <div id="lista-linguas">
+  <button data-lingua="japones">Japonês</button>
+  <button data-lingua="portugues">Português</button>
+  <button data-lingua="ingles">Inglês</button>
+</div>
+
+<div id="detalhes">
+  <div id="japones" class="detalhe-lingua" style="display:none;">
+    <h2>Japonês</h2>
+    <p>Falado no Japão por mais de 125 milhões de pessoas.</p>
+    <audio controls src="audios/japones.mp3"></audio>
+  </div>
+
+  <div id="portugues" class="detalhe-lingua" style="display:none;">
+    <h2>Português</h2>
+    <p>Falado no Brasil, Portugal e países lusófonos.</p>
+    <audio controls src="audios/portugues.mp3"></audio>
+  </div>
+
+  <div id="ingles" class="detalhe-lingua" style="display:none;">
+    <h2>Inglês</h2>
+    <p>Idioma global, falado em muitos países pelo mundo.</p>
+    <audio controls src="audios/ingles.mp3"></audio>
+  </div>
+</div>
+
     <main></main>
+ 
 </body>
+<script src="mobile-navbar.js"></script>
 </html>
