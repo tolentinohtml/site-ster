@@ -55,3 +55,16 @@ botoes.forEach(botao => {
     document.getElementById(id).style.display = "block";
   });
 });
+document.querySelectorAll('#lista-linguas button').forEach(botao => {
+  botao.addEventListener('click', () => {
+    const span = botao.querySelector('span');
+
+    if (span) {
+      botao.removeChild(span);
+    } else {
+      const coracao = document.createElement('span');
+      coracao.textContent = '❤️';
+      botao.appendChild(coracao);
+    }
+  });
+});
