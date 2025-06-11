@@ -1,4 +1,5 @@
 class MobileNavbar {
+
   constructor(mobileMenu, navList, navLinks) {
     this.mobileMenu = document.querySelector(mobileMenu);
     this.navList = document.querySelector(navList);
@@ -66,5 +67,28 @@ document.querySelectorAll('#lista-linguas button').forEach(botao => {
       coracao.textContent = '❤️';
       botao.appendChild(coracao);
     }
+    // Seleciona todos os botões
+const botoes = document.querySelectorAll('#lista-linguas button');
+
+// Seleciona todas as divs de detalhes
+const detalhes = document.querySelectorAll('.detalhe-lingua');
+
+// Adiciona evento de clique pra cada botão
+botoes.forEach(botao => {
+  botao.addEventListener('click', () => {
+    // Esconde todos os detalhes
+    detalhes.forEach(div => div.style.display = 'none');
+
+    // Pega a linguagem clicada
+    const lingua = botao.getAttribute('data-lingua');
+
+    // Mostra a div correspondente
+    const divSelecionada = document.getElementById(lingua);
+    if (divSelecionada) {
+      divSelecionada.style.display = 'block';
+    }
+  });
+});
+
   });
 });
