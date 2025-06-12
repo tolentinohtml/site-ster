@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo ❤️</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 3em;
+            animation: float 3s ease-in-out infinite;
+            text-shadow: 2px 2px #ff6f91;
+        }
+
+        h3 {
+            font-size: 1.7em;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6em;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(3px);
+            color: #4B0082;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            font-family: 'Dancing Script', cursive;
+            white-space: pre-line;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 30px;
+            background-color: #ff6f91;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .heart {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center/contain;
+            animation: floatUp 3s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(1);}
+            100% { opacity: 0; transform: translateY(-600px) scale(1.5);}
+        }
+    </style>
+</head>
+<body>
+    <h1>Oiiii amor eu te amo você ❤️</h1>
+    <h3 id="mensagem"></h3>
+
+    <button onclick="soltarCoracoes()">Soltar Corações ❤️</button>
+
+    <script>
+       
+        function soltarCoracoes() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 3000);
+            }
+        }
+
+        const texto = `Cara amorzinha da minha vida, eu te amo mais que tudo nesse mundo todinho, eu amo seu cabelo, seus cachinhos perfeitos, amo seus olhinhos castanhos brilhantes eles são muito fofos, não consigo manter contato visual normalmente, mas seus olhos me dão uma vontade imensa do tamanho da Thais Carla de admirar eles. Eu te amo meo, mesmo você não me dando boa noite quase sempre, e isso é um absurdo, quando isso acontece, tenho pesadelos horríveis e não consigo dormir direito. O que me conforta quando isso acontece é pensar que algum dia ai eu vou ter como não deixar você dormir sem me dar boa noite porquê vou estar do seu ladinho, OKOKOK!!`;
+
+        let i = 0;
+        const speed = 50; 
+
+        function typeWriter() {
+            if (i < texto.length) {
+                document.getElementById("mensagem").innerHTML += texto.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        
+        window.onload = typeWriter;
+        
+    const senhaCorreta = "ster";
+
+   
+    const senha = prompt("Digite a senha pra ver a surpresinha:  Dica: O que eu mais amo nesse mundo");
+
+    
+    if (senha !== senhaCorreta) {
+        alert("Senha errada! Tchauzinho 😘");
+        window.location.href = "index.html";
+    }
+    </script>
+    <a href="index.html" style="
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #fbc2eb;
+    color: #4B0082;
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4em;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s, background-color 0.3s;
+">
+    ⬅️ Voltar pro Início
+</a>
+
+</body>
+</html>
