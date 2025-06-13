@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Joguinho do Amor 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6f0 url('https://www.transparenttextures.com/patterns/hearts.png');
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      color: #ff66b2;
+    }
+
+    h1 {
+      margin: 20px 0;
+      font-size: 40px;
+    }
+
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      gap: 15px;
+      justify-content: center;
+      margin: 30px auto;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      background: #ffcce6;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(255, 0, 128, 0.2);
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      backface-visibility: hidden;
+    }
+
+    .card-front {
+      background: #ff99cc;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    button {
+      margin: 20px;
+      padding: 10px 20px;
+      background: #ff66b2;
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(255, 0, 128, 0.3);
+    }
+
+    button:hover {
+      background: #ff4da6;
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ Nosso joguinho do amor ✨</h1>
+  <div class="game-board" id="gameBoard"></div>
+  <button onclick="resetGame()">🔄 Jogar de novo</button>
+
+  <script>
+    const images = [
+      'foto1.jpg', 'foto2.jpg', 'foto3.jpg', 'foto4.jpg', 'foto5.jpg', 'foto6.jpg', 'foto7.jpg'
+    ];
+
+    let cards = images.concat(images);
+    cards = shuffle(cards);
+
+    const gameBoard = document.getElementById('gameBoard');
+    let firstCard = null;
+    let secondCard = null;
+    let lockBoard = false;
+
+    cards.forEach(img => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+
+      const cardInner = document.createElement('div');
+      cardInner.classList.add('card-inner');
+
+      const front = document.createElement('div');
+      front.classList.add('card-front');
+
+      const back = document.createElement('div');
+      back.classList.add('card-back');
+      back.style.backgroundImage = `url(img/${img})`;
+
+      cardInner.appendChild(front);
+      cardInner.appendChild(back);
+      card.appendChild(cardInner);
+      gameBoard.appendChild(card);
+
+      card.addEventListener('click', () => {
+        if (lockBoard || card.classList.contains('flipped')) return;
+
+        card.classList.add('flipped');
+
+        if (!firstCard) {
+          firstCard = card;
+        } else {
+          secondCard = card;
+          checkMatch();
+        }
+      });
+    });
+
+    function checkMatch() {
+      lockBoard = true;
+      const img1 = firstCard.querySelector('.card-back').style.backgroundImage;
+      const img2 = secondCard.querySelector('.card-back').style.backgroundImage;
+
+      if (img1 === img2) {
+        firstCard = null;
+        secondCard = null;
+        lockBoard = false;
+      } else {
+        setTimeout(() => {
+          firstCard.classList.remove('flipped');
+          secondCard.classList.remove('flipped');
+          firstCard = null;
+          secondCard = null;
+          lockBoard = false;
+        }, 1000);
+      }
+    }
+
+    function shuffle(array) {
+      return array.sort(() => 0.5 - Math.random());
+    }
+
+    function resetGame() {
+      gameBoard.innerHTML = '';
+      cards = shuffle(images.concat(images));
+      firstCard = null;
+      secondCard = null;
+      lockBoard = false;
+
+      cards.forEach(img => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const cardInner = document.createElement('div');
+        cardInner.classList.add('card-inner');
+
+        const front = document.createElement('div');
+        front.classList.add('card-front');
+
+        const back = document.createElement('div');
+        back.classList.add('card-back');
+        back.style.backgroundImage = `url(img/${img})`;
+
+        cardInner.appendChild(front);
+        cardInner.appendChild(back);
+        card.appendChild(cardInner);
+        gameBoard.appendChild(card);
+
+        card.addEventListener('click', () => {
+          if (lockBoard || card.classList.contains('flipped')) return;
+
+          card.classList.add('flipped');
+
+          if (!firstCard) {
+            firstCard = card;
+          } else {
+            secondCard = card;
+            checkMatch();
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
