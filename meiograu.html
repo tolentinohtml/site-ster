@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Meio Grau de Miopia</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6f0;
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      color: #ff66b2;
+    }
+
+    h1 {
+      margin: 50px 0 20px;
+      font-size: 36px;
+    }
+
+    .blur-message {
+      font-size: 24px;
+      margin: 30px auto;
+      max-width: 600px;
+      filter: blur(8px);
+      transition: filter 0.5s;
+    }
+
+    .zoeira {
+      font-size: 20px;
+      margin-top: 20px;
+      color: #ff3399;
+      display: none;
+    }
+
+    button {
+      margin: 20px;
+      padding: 12px 25px;
+      background: #ff66b2;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(255, 0, 128, 0.3);
+    }
+
+    button:hover {
+      background: #ff4da6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>😻 Aqui em baixo tem uma pequena mensagem fofa pra você 😻</h1>
+
+  <div id="message" class="blur-message">
+   Eu te amo mais que tudo nesse mundo, obrigado por ser tão massa boyy, tu é fechamento pae, te amo muito, você é muito mais do que eu sempre sonhei.💌
+  </div>
+
+  <div id="zoeira" class="zoeira">
+    Que cega 😂 meio grau de miopia... coloca o óculos aí 👓
+  </div>
+
+  <button id="btnProcurar" onclick="mostrarZoeira()">Cade a mensagem????</button>
+  <button id="btnOculos" style="display:none;" onclick="tirarBlur()">👓 Colocar óculos</button>
+  <button id="btnVoltar" style="display:none;" onclick="voltarInicio()">🏠 Voltar para o início</button>
+
+  <script>
+    function mostrarZoeira() {
+      document.getElementById('zoeira').style.display = 'block';
+      document.getElementById('btnOculos').style.display = 'inline-block';
+    }
+
+    function tirarBlur() {
+      document.getElementById('message').style.filter = 'blur(0px)';
+      document.getElementById('zoeira').style.display = 'none';
+      document.getElementById('btnOculos').style.display = 'none';
+      document.getElementById('btnProcurar').style.display = 'none';
+      document.getElementById('btnVoltar').style.display = 'inline-block';
+    }
+
+    function voltarInicio() {
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>

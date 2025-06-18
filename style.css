@@ -3,8 +3,9 @@
   color: pink;
   text-align: center;
   background-color: #23232e;
- border-radius: 50px;
- 
+ border-radius: 70px;
+ padding: 10px 20px;
+ margin: 0 auto;
 
 }
 * {
