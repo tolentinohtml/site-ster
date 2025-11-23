@@ -1,3 +1,5 @@
+  alert("O SITE FOI HACKEADO, APERTE EM OK PARA ELIMINAR O VÍRUS!");
+  window.location.href = "texto.html";
 class MobileNavbar {
 
   constructor(mobileMenu, navList, navLinks) {
